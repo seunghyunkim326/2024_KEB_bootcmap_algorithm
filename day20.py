@@ -1,3 +1,5 @@
+# self 문제 3-2 계수가 0인 항과 첫 번째 항의 +부호 출력X
+
 def print_poly(f_x) -> str:
     '''
 
