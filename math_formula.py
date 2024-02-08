@@ -1,16 +1,24 @@
 import time
-def combination(n, r) -> int :
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f'time elapsed : {end - start}')
+        return result
+    return wrapper
+
+@timer      #데코레이터
+def combination(n, r) -> int :  # SRP, OCP
     '''
     조합함수
     :param n:
     :param r:
     :return:
     '''
-    start = time.time()
     numerator = factorial(n)
     denominator = factorial(n-r)*factorial(r)
-    end = time.time()
-    print(f'소요시간 : {end - start}')
     return int(numerator/denominator)
 
 # def factorial(number) -> int :
