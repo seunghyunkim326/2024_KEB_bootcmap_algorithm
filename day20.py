@@ -1,22 +1,43 @@
-# 1~100 사이의 수를 맞추는 게임, 사용자가 입력하는 값 보다 큰지 작은지 알려주고 몇번만에 맞추는지 알아내는 게임
-import random
-random_number = random.randint(1, 100)
-chance = 10
-while chance != 0:
-    input_number = int(input("Input guess number : "))
-    if input_number == random_number:
-        print(f'You win. Answer is {random_number}')
-        # print(f'{10-chance}만에 맞췄습니다.')
-        break
-    elif input_number > random_number:
-        print(f'{input_number} is bigger. Chance left : {chance}')
-        # print(f'{chance}번의 기회가 남았습니다.')
-        chance -= 1
-    else :
-        print(f'{input_number} is lower. Chance left : {chance}')
-        # print(f'{chance}번의 기회가 남았습니다.')
-        chance -= 1
-# if chance == 0:
-#     print("You lose!!")
-else :
-    print(f"You lost!! Answer is {random_number}")
+def print_poly(f_x) -> str:
+    '''
+
+    :param f_x:
+    :return:
+    '''
+    term = len(f_x) - 1
+    poly_expression = "f(x) = "
+
+    for i in range(len(fx)):
+        coefficient = f_x[i]
+
+        if coefficient >= 0:
+            poly_expression = poly_expression + "+"
+        poly_expression = poly_expression + f'{coefficient}x^{term} '
+        term = term - 1
+
+    return poly_expression
+
+
+def calculation_poly(x_value, f_x) -> int:
+    '''
+
+    :param x_value:
+    :param f_x:
+    :return:
+    '''
+    return_value = 0
+    term = len(f_x) - 1
+
+    for i in range(len(fx)):
+        coefficient = f_x[i]
+        return_value += coefficient * pow(x_value, term)
+        term = term - 1
+
+    return return_value
+
+
+fx = [2, 3, 4, 0, -9]
+
+if __name__ == "__main__":
+    print(print_poly(fx))
+    print(calculation_poly(int(input("x 값 : ")), fx))
